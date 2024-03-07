@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#newBtn{
+	margin-left: 0.5%;
+	border:1px solid black;    
+	border-radius: 20px;
+	background-Color: black;   
+	font-weight:bold;   
+	color: white;    
+}
+#newText{
+	margin-left: 0.5%;
+	border: 1px solid gray;
+	border-radius: 20px;
+}
+</style>
+<body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+  <div class="carousel relative container mx-auto" style="max-width:1600px;">
+    
+			<!-- 제목 -->
+            <nav id="store" class="w-full z-30 top-0 px-6 py-1">
+                <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+
+                    <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
+						삭제하기
+					</a>
+				</div>
+			</nav>
+			
+      <form method=post action="/board/delete_ok">
+      <table class="table">
+        <tr>
+          <td class="text-center" style="width: 500px;padding: 10%">
+           &nbsp;&nbsp;&nbsp;&nbsp;<input type=password name=pwd size=15 class="input-sm" placeholder=" 비밀번호" id="newText"
+             required>
+           <input type=hidden name=no th:value="${no}">
+           <input type=submit value=" 삭 제 " class="btn-sm btn-danger" id="newBtn">
+           <input type=button value=" 취 소 " class="btn-sm btn-success" id="newBtn"
+             onclick="javascript:history.back()">
+           
+          </td>
+        </tr>
+      </table>
+      </form>
+  </div>
+</body>
+</html>

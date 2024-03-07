@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<title>Insert title here</title>
+<style type="text/css">
+.pagination {
+    text-align: center;
+}
+.pagination ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.pagination ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+#newBtn{
+	margin-left: 0.5%;
+	border:1px solid black;    
+	border-radius: 20px;
+	background-Color: black;   
+	font-weight:bold;   
+	color: white;    
+}
+#newText{
+	margin-left: 0.5%;
+	border: 1px solid gray;
+	border-radius: 20px;
+}
+td{
+	padding: 1%;
+}
+#detable {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+}
+</style>
+</head>
+<body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+  <div class="carousel relative container mx-auto" style="max-width:1600px;">
+    
+			<!-- 제목 -->
+            <nav id="store" class="w-full z-30 top-0 px-6 py-1">
+                <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+
+                    <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
+						내용보기
+					</a>
+				</div>
+			</nav>
+			
+	 <!-- 내용 -->
+     <table class="table" style="margin: 0px auto;margin-top: 4%" id="detable">
+       <tr>
+         <th width=20% class="text-center">번호</th>
+         <td width=40% class="text-center" th:text="${vo.no }"></td>
+         <th width=20% class="text-center">작성일</th>
+         <td width=40% class="text-center" th:text="${vo.regdate }"></td>
+       </tr>
+       <tr>
+         <th width=20% class="text-center">이름</th>
+         <td width=40% class="text-center" th:text="${vo.name }"></td>
+         <th width=20% class="text-center">조회수</th>
+         <td width=40% class="text-center" th:text="${vo.hit }"></td>
+       </tr>
+       <tr>
+         <th width=20% class="text-center">제목</th>
+         <td colspan="3" class="text-center" th:text="${vo.subject }"></td>
+       </tr>
+       <tr>
+         <td colspan="4" class="text-left" valign="top" height="200">
+           <pre style="white-space: pre-wrap;border:none;background-color: white" th:text="${vo.content }"></pre>
+         </td>
+       </tr>
+       <tr>
+         <td colspan="4" class="text-center">
+          <a th:href="@{/board/update(no=${vo.no})}" class="btn btn-info btn-xs" id="newBtn">&nbsp;수 정&nbsp;</a>
+          <a th:href="@{/board/delete(no=${vo.no})}" class="btn btn-success btn-xs" id="newBtn">&nbsp;삭 제&nbsp;</a>
+          <a th:href="@{/board/list}" class="btn btn-warning btn-xs" id="newBtn">&nbsp;목 록&nbsp;</a>
+         </td>
+       </tr>
+      
+     </table>
+     
+     <table style="margin: 3%">
+     	<tr >
+     	</tr>
+     </table>
+     
+     
+ 
+  </div>
+</body>
+</html>

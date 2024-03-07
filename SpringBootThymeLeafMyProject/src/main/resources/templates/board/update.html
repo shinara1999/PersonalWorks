@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.pagination {
+    text-align: center;
+}
+.pagination ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.pagination ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+#newBtn{
+	margin-left: 0.5%;
+	border:1px solid black;    
+	border-radius: 20px;
+	background-Color: black;   
+	font-weight:bold;   
+	color: white;    
+}
+td{
+	padding: 1%;
+}
+#newText{
+	margin-left: 0.5%;
+	border: 1px solid gray;
+	border-radius: 20px;
+}
+</style>
+</head>
+<body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+<div class="carousel relative container mx-auto" style="max-width:1600px;">
+    
+			<!-- 제목 -->
+            <nav id="store" class="w-full z-30 top-0 px-6 py-1">
+                <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+
+                    <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
+						수정하기
+					</a>
+				</div>
+			</nav>
+			
+  	<form method="post" action="/board/update_ok">
+  	<table class="table" style="margin: 0px auto;margin-top: 4%">
+  		<tr>
+  			<th width="15%" class="text-center">이름</th>
+  			<td width="85%">
+  				<input type="text" name="name" size="30" class="input-sm" th:value="${vo.name}" id="newText">
+          		<input type="hidden" name="no" th:value="${vo.no}">
+  			</td>
+  		</tr>
+  		<tr>
+  			<th width="15%" class="text-center">제목</th>
+  			<td width="85%">
+  				<input type="text" name="subject" size="50" class="input-sm" th:value="${vo.subject}" id="newText">
+  			</td>
+  		</tr>
+  		<tr>
+  			<th width="15%" class="text-center">내용</th>
+  			<td width="85%">
+  				<textarea rows="10" cols="52" name="content" th:text="${vo.content}" id="newText"></textarea>
+  			</td>
+  		</tr>
+  		<tr>
+  			<th width="15%" class="text-center">비밀번호</th>
+  			<td width="85%">
+  				<input type="password" name="pwd" size="15" class="input-sm" required id="newText">
+  			</td>
+  		</tr>
+  		<tr>
+  			<td colspan="2" class="text-center inline" style="display: inline-block;width: 100px;margin-bottom: 40%">
+  				<input type="submit" value=" 수정 " class="btn btn-sm btn-danger" id="newBtn">
+  				<input type="button" value=" 취소 " class="btn btn-sm btn-danger" onclick="javascript:history.back()" id="newBtn">
+  			</td>
+  		</tr>
+  	</table>
+  	</form>
+ </div>
+</body>
+</html>

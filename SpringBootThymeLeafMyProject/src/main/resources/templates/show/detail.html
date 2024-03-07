@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+let i=0;
+$(function(){
+	$('.updates').click(function(){ // .updates 버튼 클릭하면 .ups부분이 닫힌다.
+		$('.ups').hide()
+		$('.updates').val('수 정')
+		let no=$(this).attr("alt");
+		if(i==0)
+		{
+			$(this).val(" 취 소 ");
+			$('#u'+no).show()
+			i=1;
+		}
+		else
+		{
+			$(this).val(" 수 정 ");
+			$('#u'+no).hide()
+			i=0;
+		}
+	})
+})
+</script>
+<style type="text/css">
+.text-center {
+    text-align: center;
+}
+#sloc{
+	font-weight: bold;
+	font-size: 35px;
+	color: black;
+}
+#reviewBtn{
+	margin-left: 0.5%;
+	border:1px solid black;    
+	border-radius: 20px;
+	background-Color: black;   
+	font-weight:bold;   
+	color: white;
+	width: 80px;
+	height: 30px;
+}
+#reviewText{
+	margin-left: 0.5%;
+	margin-right: 1%;
+	border: 1px solid gray;
+	border-radius: 20px;
+	width: 800px;
+	height: 90px;
+}
+#findBtn{
+	margin-left: 0.5%;
+	border:1px solid black;    
+	border-radius: 20px;
+	background-Color: black;   
+	font-weight:bold;   
+	color: white;    
+}
+#findBtn2{
+	margin-left: 0.5%;
+	border:1px solid black;    
+	border-radius: 20px;
+	background-Color: black;   
+	font-weight:bold;   
+	color: white;
+	height: 26px;    
+	padding: 2px;
+}
+#title{
+	font-weight: bold;
+	font-size: 30px;
+	width: 1600px;
+}
+#findBtn{
+	margin-left: 0.5%;
+	border:1px solid black;    
+	border-radius: 20px;
+	background-Color: black;   
+	font-weight:bold;   
+	color: white;    
+}
+</style>
+</head>
+<body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+<div class="carousel relative container mx-auto" style="max-width:1600px;">
+    <div class="row" style="padding: 5%">
+	<table class="table" style="padding-bottom: 3%">
+	 <tr>
+	  <td>
+	    <h1 id="title" style="margin-left: 1%" th:text="${svo.stitle}"></h1>
+	    <span style="margin-left: 1.4%" th:text="${svo.sdate}"></span>
+	    <span style="margin-left: 1.4%" th:text="${svo.sloc}"></span>
+	  </td>
+	</tr>
+	</table>
+	<div style="height: 30px"></div>
+	<table class="table">
+	  <tr>
+	    <td width="35%" align="center" rowspan="4">
+	      <img th:src="${svo.sposter}" style="margin-left: 3%">
+	    </td>
+	  </tr>
+	  <tr>
+	    <td width="60%" style="margin-left: 5%;padding: 3%">
+	      <a style="color:black;font-weight: bold">등급</a>
+	      <span id="price2" th:text="${svo.sgrade}"></span>
+			<div style="height: 30px"></div>
+		      <a style="color:black;font-weight: bold">관람시간</a>
+		      <span id="price2" th:text="${svo.shour}"></span>
+			<div style="height: 30px"></div>
+		      <a style="color:black;font-weight: bold">출연</a>
+		      <span id="price2" th:text="${svo.sperformer}"></span>
+			<div style="height: 30px"></div>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td width="65%" style="padding: 3%">
+	      <a style="color:black;font-weight: bold">공연시간 안내</a><br>
+	      <span id="price2" th:text="${svo.stime}"></span>
+	<div style="height: 30px"></div>
+	      <a style="color:black;font-weight: bold">배송정보</a><br>
+	      <span id="price2" th:text="${svo.sdelivery}"></span>
+	      <div style="margin-top: 0px"><a class="btn btn-primary" style="margin-left: 80%;" onclick="javascript:history.back()" id="findBtn">&nbsp;목록&nbsp;</a></div>
+	    </td>
+	  </tr>
+	  </table>
+	  
+	  <div style="height: 50px"></div>
+	  <table class="table">
+	    
+	  </table>
+	  </div>
+	  
+	  <!-- 지도 -->
+	  <hr style="width:90%;height:2px;background-color: black;margin: 0px auto">
+	  <div style="height: 50px"></div>
+	  
+	<div class="text-center">
+		<h3 id="sloc" class="text-center">
+		    <img src="../images/wayminilogo.png" style="width: 28px;height: 33px;margin: 0px auto; display: inline-block;margin-bottom: 5px">
+		    <i class="fa fa-map-marker" aria-hidden="true" style="color:#666565;margin-right: 5px;"></i>
+		    <span th:text="${svo.sloc}"></span>
+		</h3>
+		<h4 class="text-center" th:text="${svo.saddress}" id="saddr"></h4>		
+	</div>
+	<div style="height: 50px"></div>
+	
+	<img src="../images/waylogo.png" style="width: 80px;height: 80px;margin: 0px auto">
+	<div style="height: 50px"></div>
+	
+	<hr style="width:70%;height:1px;background-color: gray;margin: 0px auto">
+	<div style="height: 50px"></div>
+	
+    <div class="row">
+    
+    <div id="map" style="width:70%;height:500px;margin: 0px auto;"></div>
+
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4d9d9ca62321ffd7cb4e3c7f71e6a9dc&libraries=services"></script>	
+		<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
+		    };  
+		
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+		
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch('[[${svo.saddress}]]', function(result, status) {
+		
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+		
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new kakao.maps.Marker({
+		            map: map,
+		            position: coords
+		        });
+		
+		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        var infowindow = new kakao.maps.InfoWindow({
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">[[${svo.sloc}]]</div>'
+		        });
+		        infowindow.open(map, marker);
+		
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
+		    } 
+		});    
+		</script>
+    </div>
+    
+    <div style="height: 50px"></div>
+    <hr style="width:90%;height:2px;background-color: black;margin: 0px auto">
+	<div style="height: 30px"></div>
+    
+    <!-- 댓글 -->
+    <div class="text-center">
+		<h3 id="sloc" class="text-center"><i class="fa fa-map-marker" aria-hidden="true" style="color:#666565;margin-right: 5px">REVIEW</i></h3>	
+	</div>
+    
+	<div style="height: 20px"></div>
+
+	<table class="table" style="padding: 4%;border-collapse: inherit;">
+		<tr>
+			<td>
+				<table class="table" th:each="rvo:${list}">
+					<tr>
+						<td align="left" th:text="|♪ ${rvo.name} (${rvo.regdate})|"></td>
+						<td align="right" style="margin-right: 20%;width: 200px">
+							<span th:if="${session.id==rvo.id}" class="inline" >
+								<input type=button value=" 수 정 " class="btn-xs btn-danger updates"
+									th:alt="${rvo.no}" id="findBtn"
+								>&nbsp;
+								<a th:href="@{/reply/delete(sno=${rvo.sno}, no=${rvo.no})}" class="btn-xs btn-danger" id="findBtn2">&nbsp;삭 제&nbsp;</a>
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<pre style="white-space: pre-wrap;background-color: white;border: grey;border-radius:30px;width: 60%;margin-bottom: 6%" th:text="${rvo.msg}"></pre>
+						</td>
+					</tr>
+					<tr th:id="|u${rvo.no}|" class="ups" style="display: none">
+					  <td>
+						<form method="post" action="/reply/insert" style="width: 700px">
+							<input type="hidden" name="no" th:value="${rvo.no}">
+  				    <input type="hidden" name="sno" th:value="${rvo.sno}">
+  					<textarea rows="5" cols="50" style="float: left;" required name="msg" th:text="${rvo.msg}" id="reviewText"></textarea>
+  					<input type=submit value="  수 정  " id="reviewBtn">
+  				</form>
+  			  </td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	
+	<table class="table" th:if="${session.id!=null}">
+	    <tr>
+	        <td style="text-align: center;">
+	            <form method="post" action="/reply/insert" style="width: 1600px">
+	                <input type="hidden" name="sno" th:value="${svo.sno}">
+	                <div class="text-center">
+	                <textarea rows="5" cols="50" style="display: inline-block;margin: 0px auto" required name="msg" id="reviewText"></textarea>
+	                </div>
+	                <input type=submit value="  작 성  " id="reviewBtn" style="display: inline-block;margin-bottom: 3%">
+	            </form>
+	        </td>
+	    </tr>
+	</table>
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.pagination {
+    text-align: center;
+}
+.pagination ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.pagination ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+#newBtn{
+	margin-left: 0.5%;
+	border:1px solid black;    
+	border-radius: 20px;
+	background-Color: black;   
+	font-weight:bold;   
+	color: white;    
+}
+td{
+	padding: 1%;
+}
+</style>
+</head>
+<body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+<div class="carousel relative container mx-auto" style="max-width:1600px;">
+    
+			<!-- 제목 -->
+            <nav id="store" class="w-full z-30 top-0 px-6 py-1">
+                <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+
+                    <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
+						COMMUNITY
+					</a>
+				</div>
+			</nav>
+			
+			<nav id="store" class="w-full z-30 top-0 px-6 py-1">
+                <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+
+                    <a href="/board/insert" class="btn btn-sm btn-danger" id="newBtn">&nbsp;새 글&nbsp;</a>
+				</div>
+			</nav>
+			
+			<!-- 리스트 출력 -->
+		  	<table class="table" style="margin: 0px auto;width: 80%">
+		  		<tr>
+		  			<th width="10%" class="text-center">번호</th>
+		  			<th width="45%" class="text-center">제목</th>
+		  			<th width="15%" class="text-center">이름</th>
+		  			<th width="20%" class="text-center">작성일</th>
+		  			<th width="10%" class="text-center">조회수</th>
+		  		</tr>
+		  		<tr th:each="vo:${list}">
+		  			<td widtd="10%" class="text-center" th:text="${vo.no}"></td>
+		  			<td widtd="45%"><a th:href="@{/board/detail(no=${vo.no})}" th:text="${vo.subject}"></a></td>
+		  			<td widtd="15%" class="text-center" th:text="${vo.name}"></td>
+		  			<td widtd="20%" class="text-center" th:text="${vo.regdate}"></td>
+		  			<td widtd="10%" class="text-center" th:text="${vo.hit}"></td>
+		  		</tr>
+		  		<tr>
+		  			<td colspan="5" class="text-center">
+		  				<a href="#" class="btn btn-sm btn-danger" id="newBtn">&nbsp;이전&nbsp;</a>
+		  					<span th:text="${curpage}"></span> page / <span th:text="${totalpage}"></span> pages
+		  				<a href="#" class="btn btn-sm btn-danger" id="newBtn">&nbsp;다음&nbsp;</a>
+		  			</td>
+		  		</tr>
+		  		<div style="height: 5%"></div>
+		  	</table>
+		  	
+ 
+   
+</div>
+</body>
+</html>
