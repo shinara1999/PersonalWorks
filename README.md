@@ -5,6 +5,6 @@
 
 ▶ Thymeleaf
 
-▶ React.js
+▶ React.js : react_myproject
 
-▶ Redux
+▶ Redux : redux_myproject
