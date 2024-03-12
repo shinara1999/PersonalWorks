@@ -105,6 +105,13 @@ public class BoardRestController {
 		}
 		return result;
 	}
+	
+	@GetMapping("board")
+	public String boardDeletetest(int no, String pwd)
+	{
+		String result="";
+		return result;
+	}
 }
 
 
