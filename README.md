@@ -5,14 +5,17 @@
 
 ▶ Thymeleaf
 
-▶ React.js : 
-            server: SpringBootReactMyProject
-            Front: react_myproject
+▶ React.js
 
-▶ Redux : 
-            server: SpringBootReactMyProject
-            Front: redux_myproject
+   server: SpringBootReactMyProject
+   Front: react_myproject
 
-▶ React-Query : 
-            server: SpringBootReactMyProject2
-            Front: maporeactquery
+▶ Redux 
+ 
+  server: SpringBootReactMyProject
+  Front: redux_myproject
+
+▶ React-Query
+           
+  server: SpringBootReactMyProject2
+  Front: maporeactquery
