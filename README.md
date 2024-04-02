@@ -8,3 +8,5 @@
 ▶ React.js : react_myproject
 
 ▶ Redux : redux_myproject
+
+▶ React-Query : redux_myproject
